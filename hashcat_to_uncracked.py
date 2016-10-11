@@ -1,4 +1,4 @@
-  #!/usr/bin/env python3
+#!/usr/bin/env python3
 # coding: utf-8
 
 """Add cracked passwords from hashcat to a dump
@@ -12,7 +12,8 @@ def parsing():
 
     parser = argparse.ArgumentParser(prog='hashcat_to_uncracked.py',
                                      usage='%(prog)s input output',
-                                     description='LOL')
+                                     description='Add cracked passwords\
+                                     to smart_hashdump dump')
     parser.add_argument('cracked',
                         help='Name of the file with cracked passwords')
     parser.add_argument('uncracked',
