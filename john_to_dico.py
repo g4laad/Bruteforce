@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-"""Create password list from hashcat."""
+"""Create password list from john the ripper output."""
 
 import argparse
 
 
-class hashcatDico:
+class johnDico:
 
     def parsing(self):
         """Parse the arguments for the scripts"""
 
-        parser = argparse.ArgumentParser(prog='hashcat_to_dico.py',
+        parser = argparse.ArgumentParser(prog='john_to_dico.py',
                                          usage='%(prog)s input output',
                                          description='LOL')
         parser.add_argument('input',
@@ -48,7 +48,7 @@ class hashcatDico:
 
 def main():
 
-    dictionnary = hashcatDico()
+    dictionnary = johnDico()
     dictionnary.parsing()
     try:
         input_file = open(dictionnary.args.input, 'r')
