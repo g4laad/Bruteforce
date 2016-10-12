@@ -29,6 +29,7 @@ class johnDico:
         output_file -- the handler of the file"""
 
         present = False
+        output_file.seek(0)
         for line2 in output_file:
             if word == line2.strip("\n"):
                 present = True
