@@ -22,7 +22,7 @@ def parsing():
                         '--output',
                         default='new_hash.txt',
                         dest='output',
-                        help='Name of the output file. Combinastion of\
+                        help='Name of the output file. Combination of\
                         the cracked passwords and the smart_hashdump file')
 
     return parser.parse_args()
