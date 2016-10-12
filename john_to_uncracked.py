@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-"""Add cracked passwords from hashcat to a dump
+"""Add cracked passwords from john.pot to a dump
 from the metasploit module smart_hashdump"""
 
 import argparse
@@ -10,7 +10,7 @@ import argparse
 def parsing():
     """Parse the arguments for the scripts"""
 
-    parser = argparse.ArgumentParser(prog='hashcat_to_uncracked.py',
+    parser = argparse.ArgumentParser(prog='john_to_uncracked.py',
                                      usage='%(prog)s input output',
                                      description='Add cracked passwords\
                                      to smart_hashdump dump')
@@ -32,7 +32,7 @@ def add_pass(cracked_pass, uncracked_pass, output_file):
     """Add the cracked passwords to the dump from smart_hashdump.
 
     Keyword arguments:
-    cracked_pass -- handler of the file with the hashcat cracked passwords
+    cracked_pass -- handler of the file with the john cracked passwords
     uncracked_pass -- handler of the dump from smart_hashdump
     output_file -- handler of the output file (default new_hash.txt)"""
     for line in uncracked_pass:
@@ -43,11 +43,12 @@ def add_pass(cracked_pass, uncracked_pass, output_file):
             hashpass = line.strip("\n").split(':')[3]
             cracked_pass.seek(0)
             for line2 in cracked_pass:
-                foo = line2.strip("\n").split(':')[0]
+                foo = line2.replace("$NT$", "", 1).strip("\n").split(':')[0]
                 if hashpass == foo:
                     password = line2.strip("\n").split(':')[1]
                     output_file.write(line.strip("\n") + ":" + password + "\n")
                     present = True
+                    break
             if present is False:
                 output_file.write(line)
 
