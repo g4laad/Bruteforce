@@ -70,3 +70,10 @@ try:
 except ldap.INVALID_CREDENTIALS:
     print("Your username or password is incorrect")
     sys.exit()
+
+#example
+users = create_file(l,
+                    "file_to_rite",
+                    "baseDN",
+                    "searchFilter",
+                    attributs)
